@@ -10,24 +10,24 @@ const skills = [
 
 const About = () => {
   return (
-    <section id="about" className="py-20 px-6">
+    <section id="about" className="py-24 md:py-32 px-6">
       <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <h2 className="text-foreground mb-4">
           About Me
         </h2>
-        <div className="h-1 w-20 bg-primary mb-8 rounded-full" />
+        <div className="accent-line mb-10" />
         
-        <p className="text-lg text-muted-foreground mb-12 max-w-2xl">
+        <p className="text-lg md:text-xl text-muted-foreground mb-14 max-w-2xl leading-relaxed">
           I am learning web development and basic automation by building real-world projects.
           My focus is on solving practical problems with simple, clear logic and modern tools.
         </p>
 
-        <h3 className="text-xl font-semibold text-foreground mb-6">Skills</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-6">Skills</h3>
         <div className="flex flex-wrap gap-3">
           {skills.map((skill) => (
             <div
               key={skill.name}
-              className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-lg hover:border-primary/50 transition-colors"
+              className="flex items-center gap-3 px-5 py-3 bg-card border border-border rounded-xl hover:border-primary/40 hover:bg-card-elevated transition-all duration-200"
             >
               <skill.icon className="h-4 w-4 text-primary" />
               <span className="text-foreground text-sm font-medium">{skill.name}</span>

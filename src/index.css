@@ -8,24 +8,32 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark theme as default - deep dark with purple accents */
-    --background: 240 10% 4%;
-    --foreground: 0 0% 95%;
+    /* Layered dark theme - deep charcoal, not pure black */
+    --background: 220 13% 9%;
+    --foreground: 210 20% 98%;
 
-    --card: 240 10% 6%;
-    --card-foreground: 0 0% 95%;
+    /* Cards slightly lighter for separation */
+    --card: 220 13% 12%;
+    --card-foreground: 210 20% 98%;
 
-    --popover: 240 10% 6%;
-    --popover-foreground: 0 0% 95%;
+    /* Elevated card for hover states */
+    --card-elevated: 220 13% 15%;
 
+    --popover: 220 13% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    /* Purple accent - vibrant but not overwhelming */
     --primary: 262 83% 58%;
     --primary-foreground: 0 0% 100%;
+    --primary-glow: 262 83% 65%;
 
-    --secondary: 240 10% 12%;
-    --secondary-foreground: 0 0% 95%;
+    /* Secondary - subtle darker shade */
+    --secondary: 220 13% 16%;
+    --secondary-foreground: 210 20% 90%;
 
-    --muted: 240 10% 12%;
-    --muted-foreground: 240 5% 55%;
+    /* Muted text - soft gray for readability */
+    --muted: 220 13% 18%;
+    --muted-foreground: 220 10% 65%;
 
     --accent: 262 83% 58%;
     --accent-foreground: 0 0% 100%;
@@ -33,19 +41,20 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 240 10% 14%;
-    --input: 240 10% 14%;
+    /* Subtle borders for depth */
+    --border: 220 13% 18%;
+    --input: 220 13% 18%;
     --ring: 262 83% 58%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 240 10% 4%;
-    --sidebar-foreground: 0 0% 95%;
+    --sidebar-background: 220 13% 9%;
+    --sidebar-foreground: 210 20% 98%;
     --sidebar-primary: 262 83% 58%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 10% 12%;
-    --sidebar-accent-foreground: 0 0% 95%;
-    --sidebar-border: 240 10% 14%;
+    --sidebar-accent: 220 13% 16%;
+    --sidebar-accent-foreground: 210 20% 90%;
+    --sidebar-border: 220 13% 18%;
     --sidebar-ring: 262 83% 58%;
   }
 }
@@ -55,7 +64,90 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Improved typography hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold tracking-tight;
+    color: hsl(var(--foreground));
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl leading-[1.1];
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl leading-tight;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  /* Card with subtle shadow and border */
+  .card-elevated {
+    @apply bg-card border border-border rounded-xl;
+    box-shadow: 0 4px 24px -4px hsl(0 0% 0% / 0.3),
+                0 0 0 1px hsl(var(--border) / 0.5);
+  }
+
+  .card-elevated:hover {
+    box-shadow: 0 8px 32px -4px hsl(0 0% 0% / 0.4),
+                0 0 0 1px hsl(var(--primary) / 0.3);
+  }
+
+  /* Section backgrounds */
+  .section-alt {
+    background: linear-gradient(
+      180deg,
+      hsl(220 13% 11%) 0%,
+      hsl(220 13% 10%) 100%
+    );
+  }
+
+  /* Accent underline */
+  .accent-line {
+    @apply h-1 w-16 rounded-full;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--primary-glow)) 100%
+    );
+  }
+}
+
+@layer utilities {
+  /* Gradient text for special headings */
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--foreground)) 0%,
+      hsl(220 10% 75%) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Primary gradient for buttons */
+  .bg-primary-gradient {
+    background: linear-gradient(
+      135deg,
+      hsl(var(--primary)) 0%,
+      hsl(var(--primary-glow)) 100%
+    );
   }
 }

@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
 
@@ -43,52 +42,58 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-20 px-6 bg-card/30">
+    <section id="projects" className="py-24 md:py-32 px-6 section-alt">
       <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+        <h2 className="text-foreground mb-4">
           Projects
         </h2>
-        <div className="h-1 w-20 bg-primary mb-8 rounded-full" />
-        <p className="text-muted-foreground mb-12 max-w-2xl">
+        <div className="accent-line mb-6" />
+        <p className="text-muted-foreground mb-14 max-w-2xl text-lg leading-relaxed">
           Real projects built to solve practical problems. Each one taught me something new.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {projects.map((project, index) => (
-            <Card key={index} className="bg-card border-border hover:border-primary/50 transition-colors group">
-              <CardHeader>
-                <CardTitle className="text-foreground group-hover:text-primary transition-colors">
-                  {project.title}
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  {project.problem}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <div>
-                  <p className="text-sm font-medium text-foreground mb-1">Solution</p>
-                  <p className="text-sm text-muted-foreground">{project.solution}</p>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {project.tools.map((tool) => (
-                    <Badge key={tool} variant="secondary" className="text-xs">
-                      {tool}
-                    </Badge>
-                  ))}
-                </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-full mt-4 group-hover:border-primary group-hover:text-primary"
-                  asChild
-                >
-                  <a href={project.demo} target="_blank" rel="noopener noreferrer">
-                    Live Demo
-                    <ExternalLink className="ml-2 h-3 w-3" />
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
+            <article 
+              key={index} 
+              className="card-elevated p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 group"
+            >
+              <h3 className="text-lg font-semibold text-foreground mb-3 group-hover:text-primary transition-colors">
+                {project.title}
+              </h3>
+              <p className="text-muted-foreground text-sm mb-5 leading-relaxed">
+                {project.problem}
+              </p>
+              
+              <div className="mb-5">
+                <p className="text-xs font-semibold text-foreground/80 uppercase tracking-wide mb-2">Solution</p>
+                <p className="text-sm text-muted-foreground leading-relaxed">{project.solution}</p>
+              </div>
+              
+              <div className="flex flex-wrap gap-2 mb-6">
+                {project.tools.map((tool) => (
+                  <Badge 
+                    key={tool} 
+                    variant="secondary" 
+                    className="text-xs bg-secondary/80 text-secondary-foreground border-0 px-3 py-1"
+                  >
+                    {tool}
+                  </Badge>
+                ))}
+              </div>
+              
+              <Button
+                variant="outline"
+                size="sm"
+                className="mt-auto w-full rounded-lg border-border hover:border-primary/50 hover:text-primary hover:bg-primary/5 transition-all"
+                asChild
+              >
+                <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                  Live Demo
+                  <ExternalLink className="ml-2 h-3.5 w-3.5" />
+                </a>
+              </Button>
+            </article>
           ))}
         </div>
       </div>
