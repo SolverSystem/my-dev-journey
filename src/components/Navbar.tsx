@@ -19,19 +19,19 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-xl border-b border-border/50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#" className="text-xl font-bold text-foreground hover:text-primary transition-colors">
           Portfolio
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <button
               key={link.name}
               onClick={() => scrollToSection(link.href)}
-              className="text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+              className="text-muted-foreground hover:text-foreground hover:bg-card px-4 py-2 rounded-lg transition-all text-sm font-medium"
             >
               {link.name}
             </button>
@@ -42,7 +42,7 @@ const Navbar = () => {
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden"
+          className="md:hidden hover:bg-card"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -51,13 +51,13 @@ const Navbar = () => {
 
       {/* Mobile Navigation */}
       {isOpen && (
-        <div className="md:hidden bg-background border-b border-border">
-          <div className="px-6 py-4 space-y-4">
+        <div className="md:hidden bg-background/95 backdrop-blur-xl border-b border-border">
+          <div className="px-6 py-4 space-y-1">
             {navLinks.map((link) => (
               <button
                 key={link.name}
                 onClick={() => scrollToSection(link.href)}
-                className="block text-muted-foreground hover:text-foreground transition-colors text-sm font-medium"
+                className="block w-full text-left text-muted-foreground hover:text-foreground hover:bg-card px-4 py-3 rounded-lg transition-all text-sm font-medium"
               >
                 {link.name}
               </button>
