@@ -89,7 +89,13 @@ const Projects = () => {
                   </Badge>
                 ))}
               </div>
-              
+
+              {project.status && (
+                <div className="mb-5 px-3 py-2 rounded-lg bg-primary/10 border border-primary/30">
+                  <p className="text-xs font-medium text-primary">{project.status}</p>
+                </div>
+              )}
+
               <Button
                 variant="outline"
                 size="sm"
