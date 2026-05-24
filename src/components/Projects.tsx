@@ -4,6 +4,14 @@ import { ExternalLink } from "lucide-react";
 
 const projects = [
   {
+    title: "AI Lead Follow-Up System",
+    problem: "Coaches manually email every lead — takes 3-4 hours/week.",
+    solution: "Automated system — 2-minute response, 24/7, personalized.",
+    tools: ["Python", "Gemini API", "Gmail API", "Google Sheets API"],
+    status: "Available for free pilot this week",
+    demo: "mailto:jkhprof1234@gmail.com",
+  },
+  {
     title: "Todo Task Manager",
     problem: "People forget daily tasks and need simple tracking.",
     solution: "A simple app to add, complete, and delete tasks.",
